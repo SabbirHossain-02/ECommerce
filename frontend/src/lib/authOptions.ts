@@ -67,24 +67,51 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     callbacks: {
-        async session({ session, user, token }) {
-            if (session?.user) {
-                // If JWT strategy, `user` parameter is undefined and we use `token`
-                if (token && token.sub) {
-                    // @ts-ignore
-                    session.user.id = token.sub;
-                } else if (user && user.id) {
-                    // @ts-ignore
-                    session.user.id = user.id;
-                }
-            }
-            return session;
-        },
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger, session }) {
+            // Initial sign in
             if (user) {
                 token.sub = user.id;
+                token.name = user.name;
+                token.email = user.email;
+                token.picture = user.image;
+                token.shippingAddress = (user as any).shippingAddress;
             }
+
+            // Sync with DB on token refresh so changes on other devices propagate
+            if (token.email) {
+                try {
+                    const dbUser = await prisma.user.findUnique({
+                        where: { email: token.email }
+                    });
+                    if (dbUser) {
+                        token.name = dbUser.name;
+                        token.picture = dbUser.image;
+                        token.shippingAddress = dbUser.shippingAddress;
+                    }
+                } catch (e) {
+                    // Ignore DB errors if in mock mode
+                }
+            }
+
+            // Client-side update()
+            if (trigger === "update" && session) {
+                if (session.name) token.name = session.name;
+                if (session.image) token.picture = session.image;
+                if (session.address) token.shippingAddress = session.address;
+            }
+
             return token;
+        },
+        async session({ session, token }) {
+            if (session?.user && token) {
+                // @ts-ignore
+                session.user.id = token.sub;
+                session.user.name = token.name as string;
+                session.user.image = token.picture as string;
+                // @ts-ignore
+                session.user.shippingAddress = token.shippingAddress as string;
+            }
+            return session;
         }
     },
     session: {
