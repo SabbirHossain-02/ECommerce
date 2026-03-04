@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import { ShoppingBag, Search, User, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+import SearchOverlay from "./SearchOverlay";
 
 // Mega Menu Data Structure
 const MENU_ITEMS = [
@@ -54,6 +57,11 @@ const MENU_ITEMS = [
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    // Connect to NextAuth session
+    const { data: session, status } = useSession();
+    const isLoggedIn = !!session;
 
     // Track scroll for glassmorphism and color flipping
     useEffect(() => {
@@ -89,15 +97,17 @@ export default function Navbar() {
                 <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
 
                     {/* Logo Area */}
-                    <div className="flex items-center gap-2 cursor-pointer group">
-                        <div className={cn(
-                            "w-8 h-8 rounded-full flex justify-center items-center transition-colors",
-                            (scrolled || hoveredItem) ? "bg-foreground text-background" : "bg-white text-black"
-                        )}>
-                            <span className="font-bold text-sm">V</span>
+                    <Link href="/">
+                        <div className="flex items-center gap-2 cursor-pointer group">
+                            <div className={cn(
+                                "w-8 h-8 rounded-full flex justify-center items-center transition-colors",
+                                (scrolled || hoveredItem) ? "bg-foreground text-background" : "bg-white text-black"
+                            )}>
+                                <span className="font-bold text-sm">V</span>
+                            </div>
+                            <span className="font-bold text-xl tracking-tight uppercase">Vanguard</span>
                         </div>
-                        <span className="font-bold text-xl tracking-tight uppercase">Vanguard</span>
-                    </div>
+                    </Link>
 
                     {/* Center Links */}
                     <nav className="hidden md:flex items-center space-x-1">
@@ -119,12 +129,25 @@ export default function Navbar() {
 
                     {/* Right Actions */}
                     <div className="flex items-center gap-4">
-                        <button className="p-2 rounded-full hover:bg-white/10 transition-colors">
+                        <button
+                            onClick={() => setIsSearchOpen(true)}
+                            className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                        >
                             <Search className="w-5 h-5" />
                         </button>
-                        <button className="p-2 rounded-full hover:bg-white/10 transition-colors">
-                            <User className="w-5 h-5" />
-                        </button>
+                        <Link href={isLoggedIn ? "/dashboard" : "/auth"}>
+                            <button className="p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center">
+                                {isLoggedIn && session?.user?.image ? (
+                                    <img
+                                        src={session.user.image}
+                                        alt="User Avatar"
+                                        className="w-6 h-6 rounded-full object-cover border border-border"
+                                    />
+                                ) : (
+                                    <User className="w-5 h-5" />
+                                )}
+                            </button>
+                        </Link>
                         <button className="p-2 rounded-full hover:bg-white/10 transition-colors relative">
                             <ShoppingBag className="w-5 h-5" />
                             <span className={cn(
@@ -219,6 +242,12 @@ export default function Navbar() {
                     />
                 )}
             </AnimatePresence>
+
+            {/* Global Search Overlay */}
+            <SearchOverlay
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+            />
         </header>
     );
 }
