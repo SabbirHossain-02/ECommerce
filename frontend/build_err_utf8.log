@@ -1,0 +1,239 @@
+﻿
+> frontend@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : Error: Can't 
+resolve 
+'tailwindcss-animate' in 'E:
+\freelancer\E-Learn\ECommerc
+e\frontend\src\app'
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Error  
+  : Can't re...ontend\src   
+ \app':String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+    [2m[at 
+finishWithoutResolve (E:\fre
+elancer\E-Learn\ECommerce\fr
+ontend\node_modules\enhanced
+-resolve\lib\Resolver.js:586
+:18)][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\Resolver.js:678:14][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\Resolver.js:739:5][0m
+    [2m[at eval (eval at 
+create (E:\freelancer\E-Lear
+n\ECommerce\frontend\node_mo
+dules\tapable\lib\HookCodeFa
+ctory.js:31:10), 
+<anonymous>:15:1)][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\Resolver.js:739:5][0m
+    [2m[at eval (eval at 
+create (E:\freelancer\E-Lear
+n\ECommerce\frontend\node_mo
+dules\tapable\lib\HookCodeFa
+ctory.js:31:10), 
+<anonymous>:27:1)][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\DescriptionFilePlugin.js:
+89:43][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\Resolver.js:739:5][0m
+    [2m[at eval (eval at 
+create (E:\freelancer\E-Lear
+n\ECommerce\frontend\node_mo
+dules\tapable\lib\HookCodeFa
+ctory.js:31:10), 
+<anonymous>:15:1)][0m
+    [2m[at E:\freelancer\E-
+Learn\ECommerce\frontend\nod
+e_modules\enhanced-resolve\l
+ib\Resolver.js:739:5][0m {
+  details: "resolve 
+'tailwindcss-animate' in 'E:
+\\freelancer\\E-Learn\\EComm
+erce\\frontend\\src\\app'\n"
+ +
+    '  Parsed request is a 
+module\n' +
+    '  using description 
+file: E:\\freelancer\\E-Lear
+n\\ECommerce\\frontend\\pack
+age.json (relative path: 
+./src/app)\n' +
+    '    resolve as 
+module\n' +
+    "      E:\\freelancer\\E
+-Learn\\ECommerce\\frontend\
+\src\\app\\node_modules 
+doesn't exist or is not a 
+directory\n" +
+    "      E:\\freelancer\\E
+-Learn\\ECommerce\\frontend\
+\src\\node_modules doesn't 
+exist or is not a 
+directory\n" +
+    '      looking for 
+modules in E:\\freelancer\\E
+-Learn\\ECommerce\\frontend\
+\node_modules\n' +
+    '        single file 
+module\n' +
+    '          using 
+description file: E:\\freela
+ncer\\E-Learn\\ECommerce\\fr
+ontend\\package.json 
+(relative path: ./node_modul
+es/tailwindcss-animate)\n' +
+    '            no 
+extension\n' +
+    "              E:\\freel
+ancer\\E-Learn\\ECommerce\\f
+rontend\\node_modules\\tailw
+indcss-animate doesn't 
+exist\n" +
+    '            .js\n' +
+    "              E:\\freel
+ancer\\E-Learn\\ECommerce\\f
+rontend\\node_modules\\tailw
+indcss-animate.js doesn't 
+exist\n" +
+    '            .json\n' +
+    "              E:\\freel
+ancer\\E-Learn\\ECommerce\\f
+rontend\\node_modules\\tailw
+indcss-animate.json doesn't 
+exist\n" +
+    '            .node\n' +
+    "              E:\\freel
+ancer\\E-Learn\\ECommerce\\f
+rontend\\node_modules\\tailw
+indcss-animate.node doesn't 
+exist\n" +
+    '            .ts\n' +
+    "              E:\\freel
+ancer\\E-Learn\\ECommerce\\f
+rontend\\node_modules\\tailw
+indcss-animate.ts doesn't 
+exist\n" +
+    "        E:\\freelancer\
+\E-Learn\\ECommerce\\fronten
+d\\node_modules\\tailwindcss
+-animate doesn't exist\n" +
+    "      E:\\freelancer\\E
+-Learn\\ECommerce\\node_modu
+les doesn't exist or is not 
+a directory\n" +
+    "      E:\\freelancer\\E
+-Learn\\node_modules 
+doesn't exist or is not a 
+directory\n" +
+    "      E:\\freelancer\\n
+ode_modules doesn't exist 
+or is not a directory\n" +
+    "      E:\\node_modules 
+doesn't exist or is not a 
+directory"
+}
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./src/app/globals.css
+Error evaluating Node.js 
+code
+CssSyntaxError: 
+tailwindcss: E:\freelancer\E
+-Learn\ECommerce\frontend\sr
+c\app\globals.css:1:1: 
+Can't resolve 
+'tailwindcss-animate' in 'E:
+\freelancer\E-Learn\ECommerc
+e\frontend\src\app'
+    at Input.error (node_mod
+ules/postcss/lib/input.js:13
+5:16) [E:\freelancer\E-Learn
+\ECommerce\frontend\.next\bu
+ild\chunks\node_modules_fe69
+3df6._.js:4651:22]
+    at Root.error (node_modu
+les/postcss/lib/node.js:146:
+32) [E:\freelancer\E-Learn\E
+Commerce\frontend\.next\buil
+d\chunks\node_modules_fe693d
+f6._.js:928:38]
+    [at Object.Once (E:\free
+lancer\E-Learn\ECommerce\fro
+ntend\node_modules\@tailwind
+css\postcss\dist\index.js:10
+:6913)]
+    at async 
+LazyResult.runAsync (node_mo
+dules/postcss/lib/lazy-resul
+t.js:293:11) [E:\freelancer\
+E-Learn\ECommerce\frontend\.
+next\build\chunks\node_modul
+es_fe693df6._.js:6214:21]
+    at async transform (turb
+opack:///[turbopack-node]/tr
+ansforms/postcss.ts:70:34) [
+E:\freelancer\E-Learn\EComme
+rce\frontend\.next\build\chu
+nks\[root-of-the-server]__51
+225daf._.js:146:36]
+    at async run (turbopack:
+///[turbopack-node]/ipc/eval
+uate.ts:92:23) [E:\freelance
+r\E-Learn\ECommerce\frontend
+\.next\build\chunks\[root-of
+-the-server]__974941ed._.js:
+443:31]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css 
+[Client Component Browser]
+    ./src/app/layout.tsx 
+[Server Component]
+
+
+    at async transform (turb
+opack:///[turbopack-node]/tr
+ansforms/postcss.ts:70:34) [
+E:\freelancer\E-Learn\EComme
+rce\frontend\.next\build\chu
+nks\[root-of-the-server]__51
+225daf._.js:146:36])
+    at async run (turbopack:
+///[turbopack-node]/ipc/eval
+uate.ts:92:23) [E:\freelance
+r\E-Learn\ECommerce\frontend
+\.next\build\chunks\[root-of
+-the-server]__974941ed._.js:
+443:31])
